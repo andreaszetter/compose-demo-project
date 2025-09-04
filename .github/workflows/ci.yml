@@ -15,4 +15,4 @@ jobs:
 
       - name: Build API Docker image
         run: |
-          docker build -t andyzetter/api:latest compose-demo-project/api
+          docker build -t andyzetter/api:latest api
