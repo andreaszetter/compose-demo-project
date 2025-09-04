@@ -16,3 +16,7 @@ jobs:
       - name: Build API Docker image
         run: |
           docker build -t andyzetter/api:latest api
+
+      - name: Run tests
+        run: |
+          docker run --rm andyzetter/api:latest npm test
