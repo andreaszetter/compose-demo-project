@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: Build API Docker Image
 
 on:
   push:
@@ -8,9 +8,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build Docker image
-        run: docker build -t andyzetter/docker-test:latest .
+      - name: Build API Docker image
+        run: |
+          docker build -t andyzetter/api:latest compose-demo-project/api
