@@ -17,6 +17,16 @@ jobs:
         run: |
           docker build -t andyzetter/api:latest api
 
+      - name: Build Return2 Docker image
+        run: |
+          docker build -t andyzetter/return2:latest return2
+      
       - name: Run tests
         run: |
           docker run --rm andyzetter/api:latest npm test
+      
+      
+
+      - name: Run tests
+        run: |
+          docker run --rm andyzetter/return2:latest npm test
