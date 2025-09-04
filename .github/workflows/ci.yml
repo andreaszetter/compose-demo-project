@@ -1,4 +1,4 @@
-name: Build API Docker Image
+name: Build Docker images
 
 on:
   push:
@@ -17,16 +17,23 @@ jobs:
         run: |
           docker build -t andyzetter/api:latest api
 
-      - name: Build Return2 Docker image
-        run: |
-          docker build -t andyzetter/return2:latest return2
-      
-      - name: Run tests
+      - name: Run API tests
         run: |
           docker run --rm andyzetter/api:latest npm test
       
-      
 
-      - name: Run tests
+    
+  build-second-service:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Build Return2 Docker image
+        run: |
+          docker build -t andyzetter/return2:latest return2
+
+      - name: Run return2 tests
         run: |
           docker run --rm andyzetter/return2:latest npm test
